@@ -2,6 +2,7 @@ import os
 from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from flask_migrate import Migrate
+from flask_wtf.csrf import CSRFProtect
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
@@ -19,6 +20,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
 db.init_app(app)
 migrate = Migrate(app, db)
+csrf = CSRFProtect(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 
@@ -35,9 +37,10 @@ def check_watering_reminders():
                 if datetime.utcnow() >= next_watering:
                     print(f"Reminder: {plant.name} needs watering!")
 
-scheduler = BackgroundScheduler()
-scheduler.add_job(func=check_watering_reminders, trigger="interval", hours=24)
-scheduler.start()
+if os.environ.get('WERKZEUG_RUN_MAIN') == 'true':
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(func=check_watering_reminders, trigger="interval", hours=24)
+    scheduler.start()
 
 @app.route('/')
 def index():
