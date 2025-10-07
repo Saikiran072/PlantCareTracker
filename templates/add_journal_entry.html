@@ -10,14 +10,14 @@
                 <h2 class="card-title mb-4">Add Journal Entry for {{ plant.name }}</h2>
                 <form method="POST" enctype="multipart/form-data" novalidate>
                     {{ form.hidden_tag() }}
-                    
+
                     <div class="mb-3">
                         {{ form.content.label(class="form-label") }}
                         {{ form.content(class="form-control", rows="6") }}
                         {% if form.content.errors %}
-                            <div class="invalid-feedback d-block">
-                                {% for error in form.content.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.content.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                         <div class="form-text">Document your plant's growth, changes, or observations</div>
                     </div>
@@ -27,9 +27,9 @@
                         {{ form.photo(class="form-control") }}
                         <div class="form-text">Add a photo to document visual changes</div>
                         {% if form.photo.errors %}
-                            <div class="invalid-feedback d-block">
-                                {% for error in form.photo.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback d-block">
+                            {% for error in form.photo.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                     </div>
 

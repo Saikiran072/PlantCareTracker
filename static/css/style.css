@@ -4,34 +4,102 @@ body {
 }
 
 .timeline {
-    position: relative;
-    padding-left: 0;
+  position: relative;
+  margin: 20px 0;
+  padding-left: 40px;
+  border-left: 3px solid #198754;
+  transition: all 0.4s ease-in-out;
 }
 
 .timeline-item {
-    position: relative;
-    border-left: 2px solid #198754;
-    padding-left: 20px;
-    margin-left: 10px;
+  position: relative;
+  margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
 }
 
-.timeline-item:before {
-    content: '';
-    position: absolute;
-    left: -7px;
-    top: 0;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #198754;
-    border: 2px solid #fff;
+.timeline-item:last-child::after {
+  animation: pulse 1.5s infinite;
 }
 
+/* The green dot */
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  bottom: 10px;
+  width: 16px;
+  height: 16px;
+  background-color: #198754;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 3px #19875422;
+  transform: translateX(-250%);
+  transition: all 0.4s ease-in-out;
+}
+
+/* Timeline content card */
+.timeline-content {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-3px);
+}
+
+/* Animation for new entries */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse effect for the newest point */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(25, 135, 84, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(25, 135, 84, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(25, 135, 84, 0);
+  }
+}
+
+.landing-page {
+    background: linear-gradient(135deg, #667eea, #764ba2, #43cea2, #185a9d);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+/* Card */
 .card {
     border: none;
     border-radius: 10px;
     transition: transform 0.2s;
-}
+    position: relative;
 
 .card:hover {
     transform: translateY(-5px);
@@ -54,4 +122,46 @@ body {
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #dc3545;   /* red color */
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+/* Background for login page */
+body.landing-page,
+body.login-page {
+    background: url("../images/login-bg.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Optional overlay to make form pop */
+body.login-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* darker overlay */
+    z-index: 0;
+}
+
+/* Make the login card stand out */
+.auth-card {
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    color: #fff;
 }

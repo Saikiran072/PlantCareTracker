@@ -15,11 +15,13 @@
         <form method="GET" class="row g-3">
             <div class="col-md-5">
                 <label for="species" class="form-label">Search by Species</label>
-                <input type="text" class="form-control" id="species" name="species" value="{{ search_species }}" placeholder="e.g., Monstera">
+                <input type="text" class="form-control" id="species" name="species" value="{{ search_species }}"
+                    placeholder="e.g., Monstera">
             </div>
             <div class="col-md-5">
                 <label for="location" class="form-label">Search by Location</label>
-                <input type="text" class="form-control" id="location" name="location" value="{{ search_location }}" placeholder="e.g., Living Room">
+                <input type="text" class="form-control" id="location" name="location" value="{{ search_location }}"
+                    placeholder="e.g., Living Room">
             </div>
             <div class="col-md-2">
                 <label class="form-label">&nbsp;</label>
@@ -32,48 +34,53 @@
 </div>
 
 {% if plants %}
-    <div class="row">
-        {% for plant in plants %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                {% if plant.photo_filename %}
-                    <img src="{{ url_for('static', filename='uploads/' + plant.photo_filename) }}" class="card-img-top" alt="{{ plant.name }}" style="height: 250px; object-fit: cover;">
-                {% else %}
-                    <div class="card-img-top bg-success bg-opacity-25 d-flex align-items-center justify-content-center" style="height: 250px;">
-                        <i class="bi bi-flower1" style="font-size: 4rem; color: #198754;"></i>
-                    </div>
+<div class="row plant-gallery">
+    {% for plant in plants %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+            {% if plant.photo_filename %}
+            <img src="{{ url_for('static', filename='uploads/' + plant.photo_filename) }}" class="card-img-top"
+                alt="{{ plant.name }}" style="height: 250px; object-fit: cover;">
+            {% else %}
+            <div class="card-img-top bg-success bg-opacity-25 d-flex align-items-center justify-content-center"
+                style="height: 250px;">
+                <i class="bi bi-flower1" style="font-size: 4rem; color: #198754;"></i>
+            </div>
+            {% endif %}
+            <div class="card-body">
+                <h5 class="card-title">{{ plant.name }}</h5>
+                <p class="card-text">
+                    <strong>Species:</strong> {{ plant.species }}<br>
+                    <strong>Location:</strong> {{ plant.location }}<br>
+                    <strong>Sunlight:</strong> {{ plant.sunlight_preference.replace('_', ' ').title() }}<br>
+                    <strong>Water every:</strong> {{ plant.watering_frequency }} days
+                </p>
+                {% if plant.last_watered %}
+                <p class="text-muted small">
+                    <i class="bi bi-droplet-fill"></i> Last watered: {{ plant.last_watered.strftime('%Y-%m-%d %I:%M
+                    %p')
+                    }}
+                </p>
                 {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ plant.name }}</h5>
-                    <p class="card-text">
-                        <strong>Species:</strong> {{ plant.species }}<br>
-                        <strong>Location:</strong> {{ plant.location }}<br>
-                        <strong>Sunlight:</strong> {{ plant.sunlight_preference.replace('_', ' ').title() }}<br>
-                        <strong>Water every:</strong> {{ plant.watering_frequency }} days
-                    </p>
-                    {% if plant.last_watered %}
-                        <p class="text-muted small">
-                            <i class="bi bi-droplet-fill"></i> Last watered: {{ plant.last_watered.strftime('%Y-%m-%d') }}
-                        </p>
-                    {% endif %}
-                </div>
-                <div class="card-footer bg-transparent">
-                    <a href="{{ url_for('plant_detail', id=plant.id) }}" class="btn btn-sm btn-outline-success w-100">
-                        View Details
-                    </a>
-                </div>
+            </div>
+            <div class="card-footer bg-transparent">
+                <a href="{{ url_for('plant_detail', id=plant.id) }}" class="btn btn-sm btn-outline-success w-100">
+                    View Details
+                </a>
             </div>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 {% else %}
-    <div class="alert alert-info text-center">
-        <i class="bi bi-info-circle"></i> 
-        {% if search_species or search_location %}
-            No plants found matching your search. <a href="{{ url_for('dashboard') }}">Clear filters</a>
-        {% else %}
-            You don't have any plants yet. <a href="{{ url_for('add_plant') }}">Add your first plant!</a>
-        {% endif %}
-    </div>
+<div class="alert alert-info text-center">
+    <i class="bi bi-info-circle"></i>
+    {% if search_species or search_location %}
+    No plants found matching your search. <a href="{{ url_for('dashboard') }}">Clear filters</a>
+    {% else %}
+    You don't have any plants yet. <a href="{{ url_for('add_plant') }}">Add your first plant!</a>
+    {% endif %}
+</div>
 {% endif %}
 {% endblock %}
+</div>

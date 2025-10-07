@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+
+{% block title %}Niche Hobby Tracker 🌱 - Houseplant Care Made Simple{% endblock %}
+
+{% block body_class %}landing-page{% endblock %}
+
+
+
+{% block page_content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6">
+                <div class="hero-content">
+                    <h1 class="display-3 fw-bold text-white mb-4 animate-fade-in">
+                        Nurture Your Green Haven 🌿
+                    </h1>
+                    <p class="lead text-white-50 mb-4 animate-fade-in-delay">
+                        Track, care, and watch your houseplants thrive with our intuitive plant care management system.
+                        Never miss a watering day again!
+                    </p>
+                    <div class="d-flex gap-3 animate-fade-in-delay-2">
+                        <a href="{{ url_for('register') }}" class="btn btn-success btn-lg px-4">
+                            <i class="bi bi-rocket-takeoff me-2"></i>Start Growing
+                        </a>
+                        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg px-4">
+                            Sign In
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <!-- <div class="hero-illustration animate-float">
+                    <div class="plant-icon-large">
+                        <i class="bi bi-flower1"></i>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+    <div class="auth-card p-4 p-md-5" style="
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        color: #fff;
+        width: 100%;
+        max-width: 1200px;
+        text-align: center;
+    ">
+        <section class="features-section py-5">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3">Everything You Need for Plant Care</h2>
+                    <p class="lead text-muted">Powerful features to keep your plants healthy and happy</p>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+                            <h4>Smart Reminders</h4>
+                            <p class="text-muted">Get automated watering reminders based on your plant's schedule. Never
+                                forget to water again!</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-camera"></i>
+                            </div>
+                            <h4>Growth Journal</h4>
+                            <p class="text-muted">Document your plant's journey with photos and notes. Track growth over
+                                time with a beautiful timeline.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-droplet"></i>
+                            </div>
+                            <h4>Care Tracking</h4>
+                            <p class="text-muted">Log watering, fertilizing, pruning, and repotting. Keep complete care
+                                history for each plant.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-image"></i>
+                            </div>
+                            <h4>Photo Gallery</h4>
+                            <p class="text-muted">Upload photos of your plants and journal entries. Visual tracking made
+                                easy and beautiful.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-search"></i>
+                            </div>
+                            <h4>Smart Search</h4>
+                            <p class="text-muted">Filter plants by species and location. Find exactly what you're
+                                looking for instantly.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+                            <h4>Private & Secure</h4>
+                            <p class="text-muted">Your plant collection is private and secure. Each user has their own
+                                protected garden.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+</section>
+
+<section class="cta-section py-5">
+    <div class="container">
+        <div class="cta-box">
+            <h2 class="display-6 fw-bold text-white mb-3">Ready to Start Your Plant Journey?</h2>
+            <p class="lead text-white-50 mb-4">Join thousands of plant lovers managing their green collections</p>
+            <a href="{{ url_for('register') }}" class="btn btn-light btn-lg px-5">
+                <i class="bi bi-leaf me-2"></i>Create Free Account
+            </a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer py-4">
+    <div class="container text-center">
+        <p class="text-muted mb-0">
+            🌱 Houseplant Care Tracker &copy; 2025 | Built with love for plant enthusiasts
+        </p>
+    </div>
+</footer>
+{% endblock %}

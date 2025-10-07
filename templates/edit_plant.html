@@ -10,14 +10,14 @@
                 <h2 class="card-title mb-4">Edit Plant: {{ plant.name }}</h2>
                 <form method="POST" enctype="multipart/form-data" novalidate>
                     {{ form.hidden_tag() }}
-                    
+
                     <div class="mb-3">
                         {{ form.name.label(class="form-label") }}
                         {{ form.name(class="form-control" + (" is-invalid" if form.name.errors else "")) }}
                         {% if form.name.errors %}
-                            <div class="invalid-feedback">
-                                {% for error in form.name.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback">
+                            {% for error in form.name.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                     </div>
 
@@ -25,9 +25,9 @@
                         {{ form.species.label(class="form-label") }}
                         {{ form.species(class="form-control" + (" is-invalid" if form.species.errors else "")) }}
                         {% if form.species.errors %}
-                            <div class="invalid-feedback">
-                                {% for error in form.species.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback">
+                            {% for error in form.species.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                     </div>
 
@@ -35,46 +35,49 @@
                         {{ form.location.label(class="form-label") }}
                         {{ form.location(class="form-control" + (" is-invalid" if form.location.errors else "")) }}
                         {% if form.location.errors %}
-                            <div class="invalid-feedback">
-                                {% for error in form.location.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback">
+                            {% for error in form.location.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                     </div>
 
                     <div class="mb-3">
                         {{ form.watering_frequency.label(class="form-label") }}
-                        {{ form.watering_frequency(class="form-control" + (" is-invalid" if form.watering_frequency.errors else "")) }}
+                        {{ form.watering_frequency(class="form-control" + (" is-invalid" if
+                        form.watering_frequency.errors else "")) }}
                         {% if form.watering_frequency.errors %}
-                            <div class="invalid-feedback">
-                                {% for error in form.watering_frequency.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback">
+                            {% for error in form.watering_frequency.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                     </div>
 
                     <div class="mb-3">
                         {{ form.sunlight_preference.label(class="form-label") }}
-                        {{ form.sunlight_preference(class="form-control" + (" is-invalid" if form.sunlight_preference.errors else "")) }}
+                        {{ form.sunlight_preference(class="form-control" + (" is-invalid" if
+                        form.sunlight_preference.errors else "")) }}
                         {% if form.sunlight_preference.errors %}
-                            <div class="invalid-feedback">
-                                {% for error in form.sunlight_preference.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback">
+                            {% for error in form.sunlight_preference.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                     </div>
 
                     <div class="mb-3">
                         {% if plant.photo_filename %}
-                            <div class="mb-2">
-                                <img src="{{ url_for('static', filename='uploads/' + plant.photo_filename) }}" alt="{{ plant.name }}" class="img-thumbnail" style="max-height: 200px;">
-                                <p class="text-muted small">Current photo</p>
-                            </div>
+                        <div class="mb-2">
+                            <img src="{{ url_for('static', filename='uploads/' + plant.photo_filename) }}"
+                                alt="{{ plant.name }}" class="img-thumbnail" style="max-height: 200px;">
+                            <p class="text-muted small">Current photo</p>
+                        </div>
                         {% endif %}
                         {{ form.photo.label(class="form-label") }}
                         {{ form.photo(class="form-control" + (" is-invalid" if form.photo.errors else "")) }}
                         <div class="form-text">Upload a new photo to replace the current one (optional)</div>
                         {% if form.photo.errors %}
-                            <div class="invalid-feedback">
-                                {% for error in form.photo.errors %}{{ error }}{% endfor %}
-                            </div>
+                        <div class="invalid-feedback">
+                            {% for error in form.photo.errors %}{{ error }}{% endfor %}
+                        </div>
                         {% endif %}
                     </div>
 
