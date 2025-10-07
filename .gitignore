@@ -1,20 +1,42 @@
+# Python cache and compiled files
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
+
+# Virtual environment and Python system files
+.venv/
 .Python
 .pythonlibs/
+
+# Python packaging outputs
 *.egg
 *.egg-info/
 dist/
 build/
+
+# Database and instance folder
 instance/
+*.db
+
+# Logs
+*.log
+
+# Testing and coverage
 .pytest_cache/
 .coverage
 htmlcov/
-*.db
-*.log
+
+# Uploaded files (keep folder but not contents)
 static/uploads/*
 !static/uploads/.gitkeep
+
+# Flask-Migrate migration scripts (keep the folder and __init__.py, track other scripts)
 migrations/versions/*.py
 !migrations/versions/__init__.py
+
+# IDE and OS files (optional but recommended)
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
